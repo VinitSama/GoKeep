@@ -1,0 +1,6 @@
+@GoKeep_june_HostAddress = http://localhost:5196
+
+GET {{GoKeep_june_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

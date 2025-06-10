@@ -1,0 +1,10 @@
+.env
+bin/
+obj/
+*.nupkg
+.nuget/
+appsettings.Development.json
+appsettings.Local.json
+.vscode/
+.vs/
+.idea
