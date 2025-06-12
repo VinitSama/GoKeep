@@ -14,10 +14,13 @@ Env.Load(); // Load environment variables from .env file
 // Add services to the container. Configure CORS to allow all origins, methods, and headers
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAllOrigins",
-        builder => builder.AllowAnyOrigin()
-                          .AllowAnyMethod()
-                          .AllowAnyHeader());
+    options.AddPolicy("AllowNetlifyOrigin", policy =>
+    {
+        policy.WithOrigins("https://gokeep-proj.netlify.app")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials(); // Only if you're using cookies/auth headers
+    });
 });
 
 // Register the services
