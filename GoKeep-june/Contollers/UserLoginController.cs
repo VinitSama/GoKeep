@@ -21,7 +21,6 @@ namespace GoKeep_june.Contollers
         [HttpPost("registration")]
         public async Task<IActionResult> RegisterUser(RegisterRequestModel userModel)
         {
-            Console.WriteLine("1");
             try
             {
                 var result = await _userBL.RegisterUser(userModel);
@@ -40,7 +39,6 @@ namespace GoKeep_june.Contollers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
                 return BadRequest();
             }
         }
@@ -67,7 +65,6 @@ namespace GoKeep_june.Contollers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
                 return BadRequest();
             }
         }
@@ -104,7 +101,6 @@ namespace GoKeep_june.Contollers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
                 return BadRequest();
             }
         }

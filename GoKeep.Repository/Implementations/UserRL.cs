@@ -18,7 +18,6 @@ namespace GoKeep.Repository
         }
         public async Task<bool> RegisterUser(RegisterRequestModel userModel, string passwordHash)
         {
-            Console.WriteLine("3");
             try
             {
 
@@ -71,8 +70,6 @@ namespace GoKeep.Repository
                 {
                     return null!;
                 }
-                Console.WriteLine(response);
-                //var refreshToken = new RefreshCreateRequestModel(response.Id, Guid.NewGuid().ToString(), 7);
                 var refreshResponse = await _context.UserRefreshTokens
                     .FirstOrDefaultAsync(r => r.UserId == response.Id && r.IsActive);
                 if (refreshResponse != null)
@@ -107,14 +104,12 @@ namespace GoKeep.Repository
             {
                 var userResponse = await _context.UsersKeep
                     .FirstOrDefaultAsync(r => r.Email == refreshModel.Email && r.IsActive);
-                Console.WriteLine(userResponse?.Id + " " +userResponse?.Email+ " "+userResponse?.CreatedAt);
                 if (userResponse == null)
                 {
                     return null!;
                 }
                 var refreshResponse = await _context.UserRefreshTokens
                     .FirstOrDefaultAsync(r => r.Token == refreshModel.OldToken && r.IsActive);
-                //Console.WriteLine(refreshResponse?.CreatedAt + " " + refreshResponse.ExpiryDate);
                 if (refreshResponse == null)
                 {
                     return null!;

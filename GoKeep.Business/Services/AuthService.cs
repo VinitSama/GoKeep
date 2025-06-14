@@ -22,7 +22,6 @@ namespace GoKeep.Business
                 new Claim(ClaimTypes.Role, role)
             };
             int expiryMinutesInt = int.TryParse(expiryMinutes, out var minutes) ? minutes : 15; // Default to 15 minutes if parsing fails
-            Console.WriteLine(email + " " + jwtKey + " " + issuer + " " + audience + " " + expiryMinutes + " " + expiryMinutesInt.ToString());
             var token = new JwtSecurityToken(
                 issuer,
                 audience,

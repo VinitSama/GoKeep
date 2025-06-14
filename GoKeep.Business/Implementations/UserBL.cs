@@ -32,21 +32,12 @@ namespace GoKeep.Business
         }
         public async Task<TokenResponseModel> LoginUser(LoginRequestModel userModel)
         {
-            //string environmentVariable = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            //Console.WriteLine($"The current environment is: {environmentVariable}");
-            //Console.WriteLine(_config["Jwt:Key"]);
-            //Console.WriteLine(_config["Jwt:Issuer"]);
-            //Console.WriteLine(_config["Jwt:Audience"]);
-            //Console.WriteLine(_config["Jwt:ExpiryInMinutes"]);
-            //Console.WriteLine(_config["ExpiryInMinutes"]);
             try
             {
                 var result = await _userRL.LoginUser(userModel);
                 if (result != null)
                 {
                     bool isPasswordVerified = PasswordService.VerifyPassword(result.Password, userModel.Password);
-                    Console.WriteLine(Environment.GetEnvironmentVariable("JWT_ISSUER"));
-                    Console.WriteLine(Environment.GetEnvironmentVariable("JWT_AUDIENCE"));
                     var JwtToken = AuthService.GenerateToken(userModel.Email, Environment.GetEnvironmentVariable("JWT_KEY"), Environment.GetEnvironmentVariable("JWT_ISSUER"), Environment.GetEnvironmentVariable("JWT_AUDIENCE"), Environment.GetEnvironmentVariable("JWT_EXPIRATY_IN_MINUTE"));
                     var token = new TokenResponseModel()
                     {

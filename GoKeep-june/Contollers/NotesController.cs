@@ -46,7 +46,6 @@ namespace GoKeep_june.Contollers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
                 return BadRequest();
             }
         }
@@ -77,7 +76,6 @@ namespace GoKeep_june.Contollers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
                 return BadRequest();
             }
         }
@@ -103,7 +101,6 @@ namespace GoKeep_june.Contollers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
                 return BadRequest();
             }
         }
@@ -129,7 +126,6 @@ namespace GoKeep_june.Contollers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
                 return BadRequest();
             }
         }
@@ -156,7 +152,6 @@ namespace GoKeep_june.Contollers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
                 return BadRequest();
             }
         }
@@ -182,7 +177,6 @@ namespace GoKeep_june.Contollers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
                 return BadRequest();
             }
         }
@@ -208,7 +202,6 @@ namespace GoKeep_june.Contollers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
                 return BadRequest();
             }
         }
@@ -233,7 +226,6 @@ namespace GoKeep_june.Contollers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
                 return BadRequest();
             }
         }
