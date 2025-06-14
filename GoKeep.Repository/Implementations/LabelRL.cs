@@ -20,15 +20,6 @@ namespace GoKeep.Repository
         {
             try
             {
-                //var result = await _context.Labels.FromSqlRaw("EXEC CreateNewLabel @Email, @LabelName",
-                //        new SqlParameter("@Email", email),
-                //        new SqlParameter("@LabelName", labelModel.label)).ToListAsync();
-                //if (result.Any())
-                //{
-                //    return result[0].Id;
-                //}
-                //return -999;
-
                 var user = await _context.UsersKeep
                     .FirstOrDefaultAsync(u => u.Email == email && u.IsActive);
                 if (user == null)
@@ -70,15 +61,6 @@ namespace GoKeep.Repository
         {
             try
             {
-                //var result = await _context.Database
-                //    .ExecuteSqlRawAsync("EXEC DeleteLabelById @LabelId",
-                //        new SqlParameter("@LabelId", labelId));
-                //if (result > 0)
-                //{
-                //    return true;
-                //}
-                //return false;
-
                 var label = await _context.Labels
                     .FirstOrDefaultAsync(l => l.Id == labelId && l.IsActive);
                 if (label == null)
@@ -101,24 +83,6 @@ namespace GoKeep.Repository
             var result = new List<GetAllLabelResponseModel>();
             try
             {
-                //var records = await _context.Labels
-                //    .FromSqlRaw("EXEC GetAllLabelByEmail @Email",
-                //        new SqlParameter("@Email", email))
-                //    .ToListAsync();
-                //if (records.Any())
-                //{
-                //    foreach (var record in records)
-                //    {
-                //        result.Add(new GetAllLabelResponseModel()
-                //        {
-                //            Id = record.Id,
-                //            Name = record.Name,
-                //            CreatedAt = record.CreatedAt
-                //        });
-                //    }
-                //}
-                //return result;
-
                 var user = await _context.UsersKeep
                     .FirstOrDefaultAsync(u => u.Email == email && u.IsActive);
                 if (user == null)
@@ -146,16 +110,6 @@ namespace GoKeep.Repository
         {
             try
             {
-                //var result = await _context.Database
-                //    .ExecuteSqlRawAsync("EXEC UpdateLabelById @LabelId, @LabelName",
-                //        new SqlParameter("@LabelId", labelModel.Id),
-                //        new SqlParameter("@LabelName", labelModel.Name));
-                //if (result > 0)
-                //{
-                //    return true;
-                //}
-                //return false;
-
                 var label = await _context.Labels
                     .FirstOrDefaultAsync(l => l.Id == labelModel.Id && l.IsActive);
                 if (label == null)

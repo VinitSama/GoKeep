@@ -10,7 +10,7 @@ namespace GoKeep.Repository
     public interface INoteLabelRL
     {
         Task<List<GetNotesLabelResponseModel>> GetNoteLable(string email);
-        Task<bool> AddNoteLabel(NoteLabelRequestModel noteLabelModel);
+        Task<bool> AddNoteLabel(NoteLabelRequestModel noteLabelModel,string email);
         Task<bool> DeleteNoteLabel(NoteLabelRequestModel noteLabelModel);
         Task<List<GetLabelIdByNoteIdResponseModel>> GetLabelIdByNoteId(int noteId);
         Task<List<GetAllNoteIdByLabelIdModel>> GetNoteIdByLabelId(int labelID);

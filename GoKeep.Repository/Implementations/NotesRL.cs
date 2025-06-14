@@ -20,20 +20,6 @@ namespace GoKeep.Repository
         {
             try
             {
-                //var result = await _context.Notes.FromSqlRaw($"EXEC CreateNewNote @Email, @Title, @Content, @IsPinned, @IsArchived, @Istrashed",
-                //    new SqlParameter("@Email", email),
-                //    new SqlParameter("@Title", noteModel.Title),
-                //    new SqlParameter("@Content", noteModel.Content),
-                //    new SqlParameter("@IsPinned", noteModel.IsPinned),
-                //    new SqlParameter("@IsArchived", noteModel.IsArchived),
-                //    new SqlParameter("@Istrashed", noteModel.IsTrashed)).ToListAsync();
-                //if (result.Any())
-                //{
-                //    return result[0].Id;
-                //}
-                //return -1;
-
-
                 var user = await _context.UsersKeep.FirstOrDefaultAsync(r => r.Email == email && r.IsActive);
                 if (user == null)
                 {
@@ -70,14 +56,6 @@ namespace GoKeep.Repository
         {
             try
             {
-                //var result = await _context.Database.ExecuteSqlRawAsync($"EXEC DeleteNoteByIdForever @NoteId",
-                //    new SqlParameter("@NoteId", noteId));
-                //if (result > 0)
-                //{
-                //    return true;
-                //}
-                //return false;
-
                 var note = await _context.Notes.FirstOrDefaultAsync(r => r.Id == noteId && !r.DeleteForever);
                 if (note == null)
                 {
@@ -103,14 +81,6 @@ namespace GoKeep.Repository
         {
             try
             {
-                //var result = await _context.Database.ExecuteSqlRawAsync($"EXEC DeleteNoteById @NoteId",
-                //    new SqlParameter("@NoteId", noteId));
-                //if (result > 0)
-                //{
-                //    return true;
-                //}
-                //return false;
-
                 var note = await _context.Notes.FirstOrDefaultAsync(r => r.Id == noteId && !r.DeleteForever);
                 if (note == null)
                 {
@@ -186,14 +156,6 @@ namespace GoKeep.Repository
         {
             try
             {
-                //var result = await _context.Database.ExecuteSqlRawAsync($"EXEC ToggleArchiveNoteById @NoteId",
-                //    new SqlParameter("@NoteId", noteId));
-                //if (result > 0)
-                //{
-                //    return true;
-                //}
-                //return false;
-
                 var note = await _context.Notes.FirstOrDefaultAsync(r => r.Id == noteId && !r.DeleteForever);
                 if (note == null)
                 {
@@ -219,14 +181,6 @@ namespace GoKeep.Repository
         {
             try
             {
-                //var result = await _context.Database.ExecuteSqlRawAsync($"EXEC TogglePinNoteById @NoteId",
-                //    new SqlParameter("@NoteId", noteId));
-                //if (result > 0)
-                //{
-                //    return true;
-                //}
-                //return false;
-
                 var note = await _context.Notes.FirstOrDefaultAsync(r => r.Id == noteId && !r.DeleteForever);
                 if (note == null)
                 {
@@ -252,14 +206,6 @@ namespace GoKeep.Repository
         {
             try
             {
-                //var result = await _context.Database.ExecuteSqlRawAsync($"EXEC ToggleTrashNoteById @NoteId",
-                //    new SqlParameter("@NoteId", noteId));
-                //if (result > 0)
-                //{
-                //    return true;
-                //}
-                //return false;
-
                 var note = await _context.Notes.FirstOrDefaultAsync(r => r.Id == noteId && !r.DeleteForever);
                 if (note == null)
                 {
@@ -285,16 +231,6 @@ namespace GoKeep.Repository
         {
             try
             {
-                //var result = await _context.Database.ExecuteSqlRawAsync($"EXEC UpdateNoteById @NoteId, @Title, @Content",
-                //    new SqlParameter("@NoteId", noteId),
-                //    new SqlParameter("@Title", noteModel.Title ?? (object)DBNull.Value),
-                //    new SqlParameter("@Content", noteModel.Content ?? (object)DBNull.Value));
-                //if (result > 0)
-                //{
-                //    return true;
-                //}
-                //return false;
-
                 if (noteModel == null)
                 {
                     return false;

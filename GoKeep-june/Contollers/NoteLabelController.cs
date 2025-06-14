@@ -25,6 +25,10 @@ namespace GoKeep_june.Contollers
             try
             {
                 var email = User.FindFirstValue(ClaimTypes.Email);
+                if (string.IsNullOrEmpty(email))
+                {
+                    return BadRequest(new GenericResponseModel { ResponseCode = 400, Description = "Email not found in claims." });
+                }
                 var result = await _notelabelBL.GetNoteLable(email);
                 var response = new GenericResponseModel<List<GetNotesLabelResponseModel>>(result);
                 if (result.Any())
@@ -51,7 +55,12 @@ namespace GoKeep_june.Contollers
         {
             try
             {
-                var result = await _notelabelBL.AddNoteLabel(notelabelModel);
+                var email = User.FindFirstValue(ClaimTypes.Email);
+                if (string.IsNullOrEmpty(email))
+                {
+                    return BadRequest(new GenericResponseModel { ResponseCode = 400, Description = "Email not found in claims." });
+                }
+                var result = await _notelabelBL.AddNoteLabel(notelabelModel, email);
                 var response = new GenericResponseModel();
                 if (result)
                 {

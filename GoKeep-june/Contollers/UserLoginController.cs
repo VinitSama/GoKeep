@@ -78,6 +78,10 @@ namespace GoKeep_june.Contollers
             try
             {
                 var email = User.FindFirstValue(ClaimTypes.Email);
+                if (string.IsNullOrEmpty(email))
+                {
+                    return BadRequest(new GenericResponseModel { ResponseCode = 400, Description = "Email not found in claims." });
+                }
                 var refreshModel = new RefreshTokenModel()
                 {
                     Email = email,

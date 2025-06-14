@@ -12,6 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 Env.Load(); // Load environment variables from .env file
 
 // Add services to the container. Configure CORS to allow all origins, methods, and headers
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowNetlifyOrigin", policy =>
@@ -19,7 +20,7 @@ builder.Services.AddCors(options =>
         policy.WithOrigins("https://gokeep-proj.netlify.app")
               .AllowAnyHeader()
               .AllowAnyMethod()
-              .AllowCredentials(); // Only if you're using cookies/auth headers
+              .AllowCredentials();
     });
 });
 
@@ -44,6 +45,10 @@ builder.Services.AddDbContext<DatabaseContext>(option => option.UseNpgsql(connec
 
 // Register the AuthService for JWT authentication
 string? JWT_KEY = Environment.GetEnvironmentVariable("JWT_KEY");
+if (string.IsNullOrEmpty(JWT_KEY))
+{
+    throw new InvalidOperationException("JWT_KEY environment variable is not set or is empty.");
+}
 string? JWT_ISSUER = Environment.GetEnvironmentVariable("JWT_ISSUER");
 string? JWT_AUDIENCE = Environment.GetEnvironmentVariable("JWT_AUDIENCE");
 var key = Encoding.ASCII.GetBytes(JWT_KEY);

@@ -16,11 +16,11 @@ namespace GoKeep.Business
             _noteLabelRL = noteLabelRL;
         }
 
-        public async Task<bool> AddNoteLabel(NoteLabelRequestModel notelabelModel)
+        public async Task<bool> AddNoteLabel(NoteLabelRequestModel notelabelModel, string email)
         {
             try
             {
-                return await _noteLabelRL.AddNoteLabel(notelabelModel);
+                return await _noteLabelRL.AddNoteLabel(notelabelModel, email);
             }
             catch (Exception ex)
             {

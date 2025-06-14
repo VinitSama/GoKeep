@@ -14,7 +14,6 @@ namespace GoKeep_june.Contollers
     public class NotesController : ControllerBase
     {
         private readonly INotesBL _noteBL;
-        private IDistributedCache _cache;
 
         public NotesController(INotesBL noteBL)
         {
@@ -27,6 +26,10 @@ namespace GoKeep_june.Contollers
             try
             {
                 var email = User.FindFirstValue(ClaimTypes.Email);
+                if (string.IsNullOrEmpty(email))
+                {
+                    return BadRequest(new GenericResponseModel { ResponseCode = 400, Description = "Email not found in claims." });
+                }
                 var result = await _noteBL.GetAllNotes(email);
                 var response = new GenericResponseModel<List<GetAllNotesResponseModel>>(result);
                 if (result.Any())
@@ -54,6 +57,10 @@ namespace GoKeep_june.Contollers
             try
             {
                 var email = User.FindFirstValue(ClaimTypes.Email);
+                if (string.IsNullOrEmpty(email))
+                {
+                    return BadRequest(new GenericResponseModel { ResponseCode = 400, Description = "Email not found in claims." });
+                }
                 var result = await _noteBL.AddNewNote(email, noteModel);
                 var response = new GenericResponseModel<int>(result);
                 if (result > -1)

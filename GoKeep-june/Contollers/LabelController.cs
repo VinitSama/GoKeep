@@ -24,6 +24,10 @@ namespace GoKeep_june.Contollers
             try
             {
                 var email = User.FindFirstValue(ClaimTypes.Email);
+                if (string.IsNullOrEmpty(email))
+                {
+                    return BadRequest(new GenericResponseModel { ResponseCode = 400, Description = "Email not found in claims." });
+                }
                 var result = await _labelBL.GetAllLabel(email);
                 var response = new GenericResponseModel<List<GetAllLabelResponseModel>>(result);
                 if (result.Any())
@@ -77,6 +81,10 @@ namespace GoKeep_june.Contollers
             try
             {
                 var email = User.FindFirstValue(ClaimTypes.Email);
+                if (string.IsNullOrEmpty(email))
+                {
+                    return BadRequest(new GenericResponseModel { ResponseCode = 400, Description = "Email not found in claims." });
+                }
                 var result = await _labelBL.CreateNewLabel(email, labelModel);
                 var response = new GenericResponseModel<int>(result);
                 if (result > -1)

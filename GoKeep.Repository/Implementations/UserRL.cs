@@ -21,19 +21,6 @@ namespace GoKeep.Repository
             Console.WriteLine("3");
             try
             {
-                //var result = await _context.Database
-                //    .ExecuteSqlRawAsync($"EXEC CreateGoKeepUser @FirstName, @LastName, @Email, @Password, @PasswordHash",
-                //    new SqlParameter("@FirstName", userModel.FirstName),
-                //    new SqlParameter("@LastName", userModel.LastName),
-                //    new SqlParameter("@Email", userModel.Email),
-                //    new SqlParameter("@Password", userModel.Password),
-                //    new SqlParameter("@PasswordHash", passwordHash));
-                //Console.WriteLine($"result: {result}");
-                //if (result > 0)
-                //{
-                //    return true;
-                //}
-                //return false;
 
                 var userWithEmail = await _context.UsersKeep
                     .FirstOrDefaultAsync(u => u.Email == userModel.Email);
